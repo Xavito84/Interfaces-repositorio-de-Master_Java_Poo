@@ -7,12 +7,16 @@ import org.xmartinez.poointerfaces.repositorio.IFullReposiorio;
 import org.xmartinez.poointerfaces.repositorio.IOrdenableRepositorio;
 import org.xmartinez.poointerfaces.repositorio.IPaginableRepositorio;
 
+import org.xmartinez.poointerfaces.repositorio.excepciones.AccesoDatoException;
+import org.xmartinez.poointerfaces.repositorio.excepciones.LecturaAccesoDatoException;
 import org.xmartinez.poointerfaces.repositorio.lista.ProductoListRepositorio;
 
 import java.util.List;
 
 public class EjemploRepositorioProducto {
     public static void main(String[] args) {
+
+        try{
 
         IFullReposiorio<Productos> repo= new ProductoListRepositorio();
         repo.crear(new Productos("Mesa", 3.5 ));
@@ -63,6 +67,15 @@ public class EjemploRepositorioProducto {
         System.out.println("******************************Total***********************");
         System.out.println("Total de registros: "+ repo.total());
 
+    }catch (
+    LecturaAccesoDatoException lade) {
+        System.out.println(lade.getMessage());
+        lade.printStackTrace();
+    } catch (
+    AccesoDatoException ade) {
+        System.out.println(ade.getMessage());
+        ade.printStackTrace();
+    }
 
 
     }

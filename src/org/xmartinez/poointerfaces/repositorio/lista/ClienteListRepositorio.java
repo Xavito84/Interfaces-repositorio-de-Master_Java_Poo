@@ -3,6 +3,7 @@ package org.xmartinez.poointerfaces.repositorio.lista;
 import org.xmartinez.poointerfaces.modelo.Cliente;
 import org.xmartinez.poointerfaces.repositorio.AbstractaListRepositorio;
 import org.xmartinez.poointerfaces.repositorio.Direccion;
+import org.xmartinez.poointerfaces.repositorio.excepciones.LecturaAccesoDatoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class ClienteListRepositorio extends AbstractaListRepositorio<Cliente> {
 
    @Override
-    public void editar(Cliente cliente) {
+    public void editar(Cliente cliente) throws LecturaAccesoDatoException {
         Cliente resultado= this.porId(cliente.getId());
         resultado.setNombre(cliente.getNombre());
         resultado.setApellido(cliente.getApellido());

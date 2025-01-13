@@ -3,13 +3,14 @@ package org.xmartinez.poointerfaces.repositorio.lista;
 import org.xmartinez.poointerfaces.modelo.Productos;
 import org.xmartinez.poointerfaces.repositorio.AbstractaListRepositorio;
 import org.xmartinez.poointerfaces.repositorio.Direccion;
+import org.xmartinez.poointerfaces.repositorio.excepciones.LecturaAccesoDatoException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoListRepositorio extends AbstractaListRepositorio <Productos> {
     @Override
-    public void editar(Productos producto) {
+    public void editar(Productos producto) throws LecturaAccesoDatoException {
         Productos p= porId(producto.getId());
         p.setDescripcion(producto.getDescripcion());
         p.setPrecio(producto.getPrecio());
